@@ -67,7 +67,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            /* background: rgba(0, 0, 0, 0.2); */
+            background: rgba(0, 0, 0, 0.2);
             z-index: 1;
         }
 
@@ -89,6 +89,7 @@
             text-align: center;
             font-family: 'Times New Roman', serif;
             font-size: 30px;
+
         }
         .about h2 {
             font-weight: bold;
@@ -149,7 +150,7 @@
 <body>
 
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#">Church Management</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -172,7 +173,7 @@
       </nav>
 
 
-    <section id="welcome" class="section welcome" style="background-image: url('https://media.istockphoto.com/id/1805813656/photo/shining-new-year-sunrise-background-with-bright-rising-sun-bokeh-and-holy-cross-silhouette-of.webp?b=1&s=170667a&w=0&k=20&c=tj77zt_AoFUpMkGd8N2QfQ2kVCzSrPHHIwFC1F6XgBY=');">
+    <section id="welcome" class="section welcome" style="background-image: url('https://media.istockphoto.com/id/948151812/photo/hands-reach-for-the-sky-to-light-in-the-form-of-a-cross.webp?b=1&s=170667a&w=0&k=20&c=YvX8p3pVkIDdt-_4icCcsUBVAOAkBMhC4LeqyUzz_nI=');">
         <div class="welcome-content">
             <h1>Church Management System</h1>
             <p>A complimentary, adaptable system dedicated to organizing church members and managing church finances with simplicity.</p>
@@ -183,12 +184,7 @@
         <h2>Transparency,Effectiveness</h2>
         <p>Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity. From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders. With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
     </section>
-    {{-- <section id="image-section">
-        <div class="container text-center">
-
-            <img src="https://images.unsplash.com/photo-1438232992991-995b7058bbb3?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8d29yc2hpcCUyMHNlc3Npb24lMjAlMjBoZHxlbnwwfHwwfHx8MA%3D%3D" alt="Description of the image" class="img-fluid my-4">
-        </div>
-    </section> --}}
+   
     <section class="signup-section" id="signup">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
