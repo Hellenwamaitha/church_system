@@ -43,10 +43,22 @@
             text-align: center;
         }
         }
-        .section {
-            padding: 20px;
-            margin: 20px;
-        }
+        .about-section .card-title {
+    font-weight: bold;
+    font-size: 1.5rem; /* Adjust the size as needed */
+}
+
+.about-section .card-text {
+    font-size: 1.1rem; /* Adjust the size as needed */
+}
+
+.about-section .card {
+    height: 100%; /* Make the card height 100% of the column */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
         .welcome {
             text-align: center;
             font-family: 'Times New Roman', serif;
@@ -67,7 +79,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.2);
+            /* background: rgba(0, 0, 0, 0.2); */
             z-index: 1;
         }
 
@@ -136,9 +148,9 @@
 
 
 .section.contact .card-body i {
-    color: black; /* Set initial color of icons to black */
-    font-size: 24px; /* Set the font size of the icons */
-    transition: color 0.3s; /* Add transition for smooth color change */
+    color: black;
+    font-size: 24px;
+    transition: color 0.3s;
 }
 
 .section.contact .card-body i:hover {
@@ -180,12 +192,51 @@
         </div>
     </section>
 
-    <section id="about" class="section about">
+    {{-- <section id="about" class="section about">
         <h2>Transparency,Effectiveness</h2>
         <p>Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity. From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders. With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
+    </section> --}}
+    <section id="about" class="about-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Transparency</h5>
+                            <p class="card-text">Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Effectiveness</h5>
+                            <p class="card-text">From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card mb-3">
+                        <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
+                        <div class="card-body">
+                            <h5 class="card-title">Efficiency</h5>
+                            <p class="card-text">With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </section>
-   
-    <section class="signup-section" id="signup">
+
+
+    {{-- <section id="our believes" class="section believes">
+        <h2>Transparency,Effectiveness</h2>
+        <p>Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity. From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders. With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
+    </section> --}}
+
+    <section class="signup-section mb-5" id="signup">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
@@ -195,7 +246,7 @@
 
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                            <div class="col-auto"><button class="btn btn-primary disabled" id="submitButton" type="submit">Notify Me!</button></div>
+                            <div class="col-auto"><button class="btn btn-primary disabled  bg-success border-0" id="submitButton" type="submit">Notify Me!</button></div>
                         </div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
@@ -205,8 +256,8 @@
         </div>
     </section>
 
-    <div id="contact" class="section contact">
-        <div class="container">
+    <div id="contact mb-5" class="section contact bg-success">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
                     <div class="card">
