@@ -97,7 +97,7 @@
         }
 
         .footer {
-            background-color: blue;
+            background-color: black;
             color: white;
             text-align: center;
             padding: 0px 0;
