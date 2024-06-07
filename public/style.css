@@ -1,0 +1,17 @@
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Ensure the body takes up the full viewport height */
+}
+
+main {
+    flex: 1; /* Grow and take up remaining vertical space */
+    display: flex;
+    flex-direction: column;
+}
+
+.contact-section,
+footer {
+    margin-top: auto;
+    /* background-color: black */
+}
