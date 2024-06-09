@@ -16,7 +16,10 @@
             margin: 0;
             padding: 0;
         }
-
+        .thank-you-message {
+            display: none;
+            margin-top: 20px;
+        }
         .navbar {
         padding: 0rem 0;
         }
@@ -31,11 +34,11 @@
             font-weight: bold;
             transition: color 0.3s;
             margin-right: 1.5rem;
-            color: white;
+            color: black;
             }
 
         .nav-link:hover {
-        color: black !important;
+        color: brown !important;
         }
 
         @media (max-width: 991.98px) {
@@ -44,20 +47,20 @@
         }
         }
         .about-section .card-title {
-    font-weight: bold;
-    font-size: 1.5rem; /* Adjust the size as needed */
-}
+        font-weight: bold;
+        font-size: 1.9rem;
+        }
 
-.about-section .card-text {
-    font-size: 1.1rem; /* Adjust the size as needed */
-}
+        .about-section .card-text {
+            font-size: 1.3rem;
+        }
 
-.about-section .card {
-    height: 100%; /* Make the card height 100% of the column */
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
+        .about-section .card {
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
 
         .welcome {
             text-align: center;
@@ -68,8 +71,8 @@
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            height: 100vh; /* Full viewport height */
-            width: 100vw; /* Full viewport width */
+            height: 100vh;
+            width: 100vw;
         }
 
         .welcome::before {
@@ -90,27 +93,16 @@
             transform: translate(-50%, -50%);
             z-index: 2;
             color: black;
-            font-weight: bold/* Ensure text is readable */
+            font-weight: bold
         }
 
         .welcome h1 {
-            font-weight: bolder; /* Set the font-weight to bold */
+            font-weight: bolder;
         }
-        .about {
-
-            text-align: center;
-            font-family: 'Times New Roman', serif;
-            font-size: 30px;
-
-        }
-        .about h2 {
-            font-weight: bold;
-            font-size: 35px;
-
-        }
+        
         .custom-card {
-            border-radius: 15px; /* Makes the corners rounded */
-            overflow: hidden; /* Ensures the content stays within the rounded borders */
+            border-radius: 15px;
+            overflow: hidden;
         }
 
         .custom-card img {
@@ -127,63 +119,61 @@
             background-color: black;
             color: white;
             text-align: center;
-            padding: 0px 0; /* Adjust padding to ensure footer text is not overlapping */
+            padding: 0px 0;
             position: fixed;
             width: 100%;
             bottom: 0;
         }
 
         .navbar .church-management {
-            font-size: 20px; /* Increase the font size of "Church Management" */
-            font-weight: bold; /* Optionally, make it bold */
+            font-size: 20px;
+            font-weight: bold;
         }
 
-        /* Styling for social icons */
-.social {
-    display: flex;
-    justify-content: center;
-    margin-top: 20px; /* Add margin to the top to create space */
-}
 
-.social a {
-    margin: 0 20px; /* Add space between icons */
-    transition: color 0.3s; /* Add transition for smooth color change */
-    margin-bottom: 40px;
-}
+        .social {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
 
-.social a i {
-    color: black;
-    font-size: 24px;
-}
+        .social a {
+            margin: 0 20px;
+            transition: color 0.3s;
+            margin-bottom: 40px;
+        }
 
-.social a:hover i {
-    color: #007bff; /* Change the color on hover */
-}
+        .social a i {
+            color: black;
+            font-size: 24px;
+        }
 
+        .social a:hover i {
+            color: brown;
+        }
 
-.section.contact .card-body i {
-    color: black;
-    font-size: 24px;
-    transition: color 0.3s;
-}
+        .section.contact .card-body i {
+            color: black;
+            font-size: 24px;
+            transition: color 0.3s;
+        }
 
-.section.contact .card-body i:hover {
-    color: #007bff; /* Change the color on hover */
-}
+        .section.contact .card-body i:hover {
+            color: brown;
+        }
 
-.contact-card {
-            border-radius: 15px; /* Makes the corners rounded */
-            max-width: 80%; /* Adjust the size as needed */
-            margin: auto; /* Centers the card within the column */
+        .contact-card {
+                border-radius: 15px;
+                max-width: 80%;
+                margin: auto;
         }
 
         .contact-card .card-body {
-            padding: 20px; /* Adjust the padding as needed */
+            padding: 20px;
         }
     </style>
 </head>
 <body>
-
 
     <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
         <div class="container">
@@ -213,7 +203,7 @@
             <h1 style="color: bLACK;">Church Management System</h1>
             <p style="color: black;">A complimentary, adaptable system dedicated to organizing church members and managing church finances with simplicity.</p>
         </div>
-    </section>
+      </section>
 
     <section id="about" class="about-section" style="margin-top: 55px;">
         <div class="container">
@@ -249,21 +239,23 @@
         </div>
     </section>
 
-    <section class="signup-section mb-5" id="signup" style="margin-top: 55px">
+    <section class="signup-section mb-5" id="signup" style="margin-top: 55px;">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
                     <i class="far fa-paper-plane fa-2x mb-2 text-black"></i>
                     <h2 class="text-black mb-5">Subscribe to receive updates!</h2>
                     <form class="form-signup" id="contactForm" data-sb-form-api-token="API_TOKEN">
-
                         <div class="row input-group-newsletter">
                             <div class="col"><input class="form-control" id="emailAddress" type="email" placeholder="Enter email address..." aria-label="Enter email address..." data-sb-validations="required,email" /></div>
-                            <div class="col-auto"><button class="btn btn-primary disabled  bg-success border-0" id="submitButton" type="submit">Notify Me!</button></div>
+                            <div class="col-auto"><button class="btn btn-primary bg-success border-0" id="submitButton" type="submit">Notify Me!</button></div>
                         </div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:required">An email is required.</div>
                         <div class="invalid-feedback mt-2" data-sb-feedback="emailAddress:email">Email is not valid.</div>
                     </form>
+                    <div class="thank-you-message text-success">
+                        Thank you for subscribing!
+                    </div>
                 </div>
             </div>
         </div>
@@ -375,6 +367,25 @@
             });
         });
     });
+
+    document.getElementById('contactForm').addEventListener('submit', function(event) {
+            event.preventDefault(); // Prevent the default form submission
+
+            // Validate the email address (simple validation)
+            var email = document.getElementById('emailAddress').value;
+            if (!email || !email.includes('@')) {
+                // Show validation error
+                document.querySelector('[data-sb-feedback="emailAddress:email"]').style.display = 'block';
+                return;
+            } else {
+                // Hide validation error if email is valid
+                document.querySelector('[data-sb-feedback="emailAddress:email"]').style.display = 'none';
+            }
+
+            // Hide the form and show the thank you message
+            document.querySelector('.form-signup').style.display = 'none';
+            document.querySelector('.thank-you-message').style.display = 'block';
+        });
 </script>
 
 </body>
