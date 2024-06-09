@@ -108,12 +108,26 @@
             font-size: 35px;
 
         }
+        .custom-card {
+            border-radius: 15px; /* Makes the corners rounded */
+            overflow: hidden; /* Ensures the content stays within the rounded borders */
+        }
+
+        .custom-card img {
+            border-top-left-radius: 15px;
+            border-top-right-radius: 15px;
+        }
+
+        .custom-card .card-body {
+            border-bottom-left-radius: 15px;
+            border-bottom-right-radius: 15px;
+        }
 
         .footer {
             background-color: black;
             color: white;
             text-align: center;
-            padding: 0px 0;
+            padding: 0px 0; /* Adjust padding to ensure footer text is not overlapping */
             position: fixed;
             width: 100%;
             bottom: 0;
@@ -134,7 +148,7 @@
 .social a {
     margin: 0 20px; /* Add space between icons */
     transition: color 0.3s; /* Add transition for smooth color change */
-
+    margin-bottom: 40px;
 }
 
 .social a i {
@@ -157,6 +171,15 @@
     color: #007bff; /* Change the color on hover */
 }
 
+.contact-card {
+            border-radius: 15px; /* Makes the corners rounded */
+            max-width: 80%; /* Adjust the size as needed */
+            margin: auto; /* Centers the card within the column */
+        }
+
+        .contact-card .card-body {
+            padding: 20px; /* Adjust the padding as needed */
+        }
     </style>
 </head>
 <body>
@@ -185,22 +208,18 @@
       </nav>
 
 
-    <section id="welcome" class="section welcome" style="background-image: url('https://media.istockphoto.com/id/948151812/photo/hands-reach-for-the-sky-to-light-in-the-form-of-a-cross.webp?b=1&s=170667a&w=0&k=20&c=YvX8p3pVkIDdt-_4icCcsUBVAOAkBMhC4LeqyUzz_nI=');">
+      <section id="welcome" class="section welcome" style="background-image: url('https://media.istockphoto.com/id/948151812/photo/hands-reach-for-the-sky-to-light-in-the-form-of-a-cross.webp?b=1&s=170667a&w=0&k=20&c=YvX8p3pVkIDdt-_4icCcsUBVAOAkBMhC4LeqyUzz_nI='); margin-bottom: 55px;">
         <div class="welcome-content">
-            <h1>Church Management System</h1>
-            <p>A complimentary, adaptable system dedicated to organizing church members and managing church finances with simplicity.</p>
+            <h1 style="color: bLACK;">Church Management System</h1>
+            <p style="color: black;">A complimentary, adaptable system dedicated to organizing church members and managing church finances with simplicity.</p>
         </div>
     </section>
 
-    {{-- <section id="about" class="section about">
-        <h2>Transparency,Effectiveness</h2>
-        <p>Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity. From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders. With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
-    </section> --}}
-    <section id="about" class="about-section">
+    <section id="about" class="about-section" style="margin-top: 55px;">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card mb-3">
+                    <div class="card mb-3 custom-card">
                         <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Transparency</h5>
@@ -209,8 +228,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-3">
-                        <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
+                    <div class="card mb-3 custom-card">
+                        <img src="https://media.istockphoto.com/id/2070403046/photo/holy-bible.webp?b=1&s=170667a&w=0&k=20&c=fh-MzZW3FeUNBOQTPKx5Hv-Cdzao23ZYkkFqFNngfVY=" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Effectiveness</h5>
                             <p class="card-text">From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders.</p>
@@ -218,8 +237,8 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card mb-3">
-                        <img src="https://media.istockphoto.com/id/471627397/photo/girl-with-hat-has-its-hands-in-prayer-position.webp?b=1&s=170667a&w=0&k=20&c=E18RU2BlCDUAMQf7Bpl2cviFsTtaub3aY9lWCjc3HMk=" class="card-img-top" alt="...">
+                    <div class="card mb-3 custom-card">
+                        <img src="https://images.unsplash.com/photo-1522158637959-30385a09e0da?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTV8fHdvcnNoaXAlMjBoZCUyMGltYWdlc3xlbnwwfHwwfHx8MA%3D%3D" class="card-img-top" alt="...">
                         <div class="card-body">
                             <h5 class="card-title">Efficiency</h5>
                             <p class="card-text">With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
@@ -230,13 +249,7 @@
         </div>
     </section>
 
-
-    {{-- <section id="our believes" class="section believes">
-        <h2>Transparency,Effectiveness</h2>
-        <p>Our complimentary church management system offers a comprehensive solution tailored to the unique needs of churches. With its adaptable design, it seamlessly organizes church members and streamlines the management of church finances with simplicity. From tracking membership data to managing donations and expenses, our system provides robust tools to empower church administrators and leaders. With intuitive features and user-friendly interfaces, it's easy for anyone to navigate and utilize effectively. Say goodbye to cumbersome spreadsheets and paperwork – our system offers a modern, efficient solution to optimize church operations and foster greater stewardship.</p>
-    </section> --}}
-
-    <section class="signup-section mb-5" id="signup">
+    <section class="signup-section mb-5" id="signup" style="margin-top: 55px">
         <div class="container px-4 px-lg-5">
             <div class="row gx-4 gx-lg-5">
                 <div class="col-md-10 col-lg-8 mx-auto text-center">
@@ -256,11 +269,11 @@
         </div>
     </section>
 
-    <div id="contact mb-5" class="section contact bg-success">
+    <div id="contact" class="section contact bg-success" style="margin-top: 25px;">
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card contact-card mb-3">
                         <div class="card-body text-center">
                             <i class="fas fa-map-marked-alt"></i>
                             <h4>Address</h4>
@@ -270,7 +283,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card contact-card mb-3">
                         <div class="card-body text-center">
                             <i class="fas fa-envelope"></i>
                             <h4>Email</h4>
@@ -280,7 +293,7 @@
                     </div>
                 </div>
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card contact-card mb-3">
                         <div class="card-body text-center">
                             <i class="fas fa-mobile-alt"></i>
                             <h4>Phone</h4>
@@ -290,7 +303,9 @@
                     </div>
                 </div>
             </div>
-            <div class="social d-flex justify-content-center">
+        </div>
+    </div>
+            <div class="social d-flex justify-content-center " >
                 <a href="#!"><i class="fab fa-twitter"></i></a>
                 <a href="#!"><i class="fab fa-facebook-f"></i></a>
                 <a href="#!"><i class="fab fa-github"></i></a>
@@ -298,7 +313,7 @@
         </div>
     </div>
 
-    <div class="footer">
+    <div class="footer" >
         <p>&copy; Church web @2024 Hellen Irungu. All rights reserved.</p>
     </div>
 
