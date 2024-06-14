@@ -99,7 +99,7 @@
         .welcome h1 {
             font-weight: bolder;
         }
-        
+
         .custom-card {
             border-radius: 15px;
             overflow: hidden;
@@ -270,7 +270,9 @@
                             <i class="fas fa-map-marked-alt"></i>
                             <h4>Address</h4>
                             <hr>
-                            <div>001000-NAIROBI</div>
+                            <div>
+                                <a href="https://maps.app.goo.gl/u8KbcW35rRzb76836" target="_blank" style="color: inherit; text-decoration: none;">001000-NAIROBI</a>
+                            </div>
                         </div>
                     </div>
                 </div>

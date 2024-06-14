@@ -3,9 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\BudgetItem;
+use App\Models\ResourceAllocation;
 
-class BudgetController extends Controller
+class ResourceAllocationController extends Controller
 {
 
     public function create()
