@@ -15,8 +15,9 @@ class AccountusersController extends Controller
      */
     public function index()
     {
-        $users = Accountusers::all();
-        return view('users.index', ['users' => $users]);
+        $accountusers = Accountusers::all(); // Fetch all users
+
+        return view('users.index', compact('accountusers')); // Pass $accountusers to the view
     }
 
     /**
@@ -35,22 +36,7 @@ class AccountusersController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    // public function store(Request $request)
-    // {
-    //     // Validate the request data
-    //     $request->validate([
-    //         'role' => 'required',
-    //         'name' => 'required',
-    //         'email' => 'required|email|unique:accountusers',
-    //         'password' => 'required|min:8',
-    //     ]);
 
-    //     // Create a new user
-    //     Accountusers::create($request->all());
-
-    //     // Redirect back with success message
-    //     return redirect()->route('users.index')->with('success', 'User created successfully.');
-    // }
 
     public function store(Request $request)
 {
@@ -130,5 +116,18 @@ class AccountusersController extends Controller
 
         // Redirect back with success message
         return redirect()->route('users.index')->with('success', 'User deleted successfully.');
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        // Perform the search query
+        $accountUsers = AccountUsers::where(function ($query) use ($search) {
+            $query->where('name', 'like', "%$search%");
+
+        })->get();
+
+        return view('users.index', ['accountUsers' => $accountUsers]);
     }
 }

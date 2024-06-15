@@ -7,27 +7,26 @@
     <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
 </div>
 @endif
-<div class="row justify-content-end">
-    <div class="col-auto">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#User">
-           Add New User
-        </button>
-    </div>
+<div class="d-flex justify-content-end mb-3">
+    <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#UserModal">
+        Add New User
+    </button>
 </div>
-
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-header">
                 <h3 class="card-title">Users List</h3>
                 <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 250px;">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fas fa-search"></i>
-                            </span>
-                        </div>
-                        <input type="text" name="table_search" class="form-control" placeholder="Search">
+                    <div class="col-auto ms-auto">
+                        <form action="{{ route('users.search') }}" method="GET">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                                </div>
+                                <input type="text" name="search" class="form-control" placeholder="Search by category">
+                            </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -43,7 +42,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        @foreach ($users as $user)
+                        @foreach ($accountusers as $user)
                         <tr>
                             <td>{{ $user->name }}</td>
                             <td>{{ $user->email }}</td>
@@ -71,11 +70,13 @@
         </div>
         <!-- /.card -->
     </div>
-
-
 </div>
 
-<div class="modal fade" id="User" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
+
+
+
+
+<div class="modal fade" id="UserModal" tabindex="-1" aria-labelledby="userModalLabel" aria-hidden="true">
     <div class="modal-dialog modal-lg">
         <div class="modal-content">
             <div class="modal-header">

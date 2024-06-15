@@ -43,6 +43,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/events/index', [EventManagementController::class, 'index'])->name('events.index');
     Route::put('/admin/events/{event}', [MemberController::class, 'update'])->name('events.update');
     Route::delete('/admin/events/{event}', [EventManagementController::class, 'destroy'])->name('events.destroy');
+    Route::get('/admin/events/search', [EventManagementController::class, 'search'])->name('events.search');
 
 
 
@@ -51,9 +52,9 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/admin/budget', [BudgetController::class, 'store'])->name('budget.store');
    Route::get('/admin/budget/{budgetItem}/edit', [BudgetController::class, 'edit'])->name('buget.edit');
    Route::put('/admin/budget/{budgetItem}', [BudgetController::class, 'update'])->name('budget.update');
-
    Route::post('/admin/budget', [BudgetController::class, 'store'])->name('budget.store');
    Route::delete('/admin/budget/{budget}', [BudgetController::class, 'destroy'])->name('budget.destroy');
+   Route::get('/admin/budget/search', [BudgetController::class, 'search'])->name('budget.search');
 
 
 
@@ -62,7 +63,7 @@ Route::middleware(['auth'])->group(function () {
    Route::post('/admin/users', [AccountusersController::class, 'store'])->name('users.store');
    Route::delete('/admin/users/{user}', [AccountusersController::class, 'destroy'])->name('users.destroy');
    Route::get('/admin/users/index', [AccountusersController::class, 'index'])->name('users.index');
-
+   Route::get('/admin/users/search', [AccountusersController::class, 'search'])->name('users.search');
 
 
    Route::get('/finance/dashboard', [FinanceController::class, 'dashboard'])->name('finance.dashboard');

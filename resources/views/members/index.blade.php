@@ -3,7 +3,7 @@
 @section('content')
 <div class="row justify-content-end">
     <div class="col-auto">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#MemberModal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#MemberModal">
             Add New Member
         </button>
     </div>
@@ -19,14 +19,16 @@
 
           <div class="card-tools">
 
-            <div class="input-group input-group-sm" style="width: 250px;">
-                <div class="input-group-prepend">
-                  <span class="input-group-text">
-                    <i class="fas fa-search"></i>
-                  </span>
-                </div>
-                <input type="text" name="table_search" class="form-control" placeholder="Search">
-              </div>
+            <div class="col-auto ms-auto">
+                <form action="{{ route('users.search') }}" method="GET">
+                    <div class="input-group input-group-sm" style="width: 250px;">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                        </div>
+                        <input type="text" name="search" class="form-control" placeholder="Search by category">
+                    </div>
+                </form>
+            </div>
 
 
 
@@ -128,7 +130,7 @@
 
 
             </div>
-            
+
             <div class="modal-footer">
                 <button type="button" class="btn btn-danger" data-bs-dismiss="modal">Close</button>
             </div>

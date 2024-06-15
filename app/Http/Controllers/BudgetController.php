@@ -61,5 +61,16 @@ class BudgetController extends Controller
 
         return redirect()->route('budget.index');
     }
+
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        // Perform search query based on 'category' exact match
+        $budgetItems = BudgetItem::where('category', 'LIKE', "%$search%")
+                                ->get();
+
+        return view('budget.index', compact('budgetItems'));
+    }
 }
 

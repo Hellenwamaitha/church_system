@@ -73,5 +73,14 @@ class EventManagementController extends Controller
         // Redirect back with success message
         return redirect()->route('events.index')->with('success', 'Event deleted successfully.');
     }
+
+    public function search(Request $request)
+{
+    $search = $request->input('search');
+    $events = Event::where('title', 'like', '%' . $search . '%')->get();
+
+    return view('events.index', compact('events'));
+}
+
 }
 

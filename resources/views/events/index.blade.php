@@ -5,7 +5,7 @@
 
 <div class="row justify-content-end">
     <div class="col-auto">
-        <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addEventModal">
+        <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addEventModal">
             Add New Event
         </button>
     </div>
@@ -14,18 +14,17 @@
 <div class="row">
     <div class="col-12">
         <div class="card">
-            <div class="card-header">
+            <div class="card-header d-flex justify-content-between align-items-center">
                 <h3 class="card-title">Events List</h3>
-
-                <div class="card-tools">
-                    <div class="input-group input-group-sm" style="width: 250px;">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text">
-                                <i class="fas fa-search"></i>
-                            </span>
+                <div class="col-auto ms-auto">
+                    <form action="{{ route('events.search') }}" method="GET">
+                        <div class="input-group input-group-sm" style="width: 250px;">
+                            <div class="input-group-append">
+                                <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
+                            </div>
+                            <input type="text" name="search" class="form-control" placeholder="Search by category">
                         </div>
-                        <input type="text" name="table_search" class="form-control" placeholder="Search">
-                    </div>
+                    </form>
                 </div>
             </div>
             <!-- /.card-header -->
