@@ -20,7 +20,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    
+
 
 });
 
@@ -49,9 +49,12 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/admin/budget/index', [BudgetController::class, 'index'])->name('budget.index');
    Route::get('/admin/budget/create', [BudgetController::class, 'create'])->name('budget.create');
    Route::post('/admin/budget', [BudgetController::class, 'store'])->name('budget.store');
-   Route::get('/admin/budget/{budget}/edit', [BudgetController::class, 'edit'])->name('buget.edit');
-   Route::put('/admin/budget/{budget}', [BudgetController::class, 'update'])->name('budget.update');
+   Route::get('/admin/budget/{budgetItem}/edit', [BudgetController::class, 'edit'])->name('buget.edit');
+   Route::put('/admin/budget/{budgetItem}', [BudgetController::class, 'update'])->name('budget.update');
+
    Route::post('/admin/budget', [BudgetController::class, 'store'])->name('budget.store');
+   Route::delete('/admin/budget/{budget}', [BudgetController::class, 'destroy'])->name('budget.destroy');
+
 
 
 
