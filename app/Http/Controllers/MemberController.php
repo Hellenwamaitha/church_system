@@ -109,5 +109,22 @@ class MemberController extends Controller
         return redirect()->route('members.index');
     }
 
+    public function search(Request $request)
+    {
+        $search = $request->input('search');
+
+        // Validate the search input
+        $request->validate([
+            'search' => 'required|string|max:255',
+        ]);
+
+        // Query the database for members matching the search term in first_name or last_name
+        $members = Member::where('first_name', 'LIKE', '%' . $query . '%')
+                          ->orWhere('last_name', 'LIKE', '%' . $query . '%')
+                          ->get();
+
+        // Return the view with the search results
+        return view('members.index', compact('members'));
+    }
 
 }

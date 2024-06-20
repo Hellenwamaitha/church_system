@@ -37,6 +37,8 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/admin/members/{member}/edit', [MemberController::class, 'edit'])->name('members.edit');
     Route::put('/admin/members/{member}', [MemberController::class, 'update'])->name('members.update');
     Route::delete('/admin/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
+    Route::get('/admin/members/search', [MemberController::class, 'search'])->name('members.search');
+    
 
     Route::post('/admin/events', [EventManagementController::class, 'store'])->name('events.store');
     Route::get('/admin/events/create', [EventManagementController::class, 'create'])->name('events.create');

@@ -7,83 +7,75 @@
             Add New Member
         </button>
     </div>
-
- </div>
-
+</div>
 
 <div class="row">
     <div class="col-12">
-      <div class="card">
-        <div class="card-header">
-          <h3 class="card-title">Members List</h3>
-
-          <div class="card-tools">
-
-            <div class="col-auto ms-auto">
-                <form action="{{ route('users.search') }}" method="GET">
-                    <div class="input-group input-group-sm" style="width: 250px;">
-                        <div class="input-group-append">
-                            <button type="submit" class="btn btn-outline-secondary"><i class="fas fa-search"></i></button>
-                        </div>
-                        <input type="text" name="search" class="form-control" placeholder="Search by category">
+        <div class="card">
+            <div class="card-header">
+                <h3 class="card-title">Members List</h3>
+                <div class="card-tools">
+                    <div class="col-auto ms-auto">
+                        <form action="{{ route('members.search') }}" method="GET">
+                            <div class="input-group input-group-sm" style="width: 250px;">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-outline-secondary">
+                                        <i class="fas fa-search"></i>
+                                    </button>
+                                </div>
+                                <input type="text" name="search" class="form-control" placeholder="Search by name">
+                            </div>
+                        </form>
                     </div>
-                </form>
+                </div>
             </div>
-
-
-
-          </div>
+            <!-- /.card-header -->
+            <div class="card-body table-responsive p-0">
+                <table class="table table-hover text-nowrap">
+                    <thead>
+                        <tr>
+                            <th>First Name</th>
+                            <th>Last Name</th>
+                            <th>Email</th>
+                            <th>Phone Number</th>
+                            <th>Address</th>
+                            <th>Membership Status</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach ($members as $member)
+                            <tr>
+                                <td>{{ $member->first_name }}</td>
+                                <td>{{ $member->last_name }}</td>
+                                <td>{{ $member->email }}</td>
+                                <td>{{ $member->phone_number }}</td>
+                                <td>{{ $member->address }}</td>
+                                <td>{{ $member->membership_status }}</td>
+                                <td>
+                                    <!-- Edit Action -->
+                                    <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editMemberModal{{ $member->id }}">
+                                        <i class="fas fa-edit"></i> Edit
+                                    </button>
+                                    <x-member.edit :member="$member" />
+                                    <form action="{{ route('members.destroy', $member->id) }}" method="POST" style="display: inline;">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">
+                                            <i class="fas fa-trash"></i> Delete
+                                        </button>
+                                    </form>
+                                </td>
+                            </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
         </div>
-        <!-- /.card-header -->
-        <div class="card-body table-responsive p-0">
-            <table class="table table-hover text-nowrap">
-                <thead>
-                    <tr>
-                        <th>First Name</th>
-                        <th>Last Name</th>
-                        <th>Email</th>
-                        <th>Phone Number</th>
-                        <th>Address</th>
-                        <th>Membership Status</th>
-                        <th>Actions</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    @foreach ($members as $member)
-                    <tr>
-                        <td>{{ $member->first_name }}</td>
-                        <td>{{ $member->last_name }}</td>
-                        <td>{{ $member->email }}</td>
-                        <td>{{ $member->phone_number }}</td>
-                        <td>{{ $member->address }}</td>
-                        <td>{{ $member->membership_status }}</td>
-                        <td>
-                            <!-- Edit Action -->
-                            <button type="button" class="btn btn-primary btn-sm" data-bs-toggle="modal" data-bs-target="#editMemberModal{{ $member->id }}">
-                                <i class="fas fa-edit"></i> Edit
-                            </button>
-
-                            <x-member.edit :member="$member" />
-
-                            <form action="{{ route('members.destroy', $member->id) }}" method="POST" style="display: inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this member?')">
-                                    <i class="fas fa-trash"></i> Delete
-                                </button>
-                            </form>
-                        </td>
-                    </tr>
-                    @endforeach
-                </tbody>
-            </table>
-
-        </div>
-
-      </div>
-
     </div>
 </div>
+
+
 
 <div class="modal fade" id="MemberModal" tabindex="-1">
     <div class="modal-dialog">
