@@ -71,8 +71,9 @@
             background-position: center;
             background-repeat: no-repeat;
             position: relative;
-            height: 100vh;
+            height: 90vh;
             width: 100vw;
+            border-radius: 0px;
         }
 
         .welcome::before {
@@ -171,11 +172,24 @@
         .contact-card .card-body {
             padding: 20px;
         }
+
+        .nav-item.dropdown:hover .dropdown-menu {
+             display: block;
+        }
+
+        .section.welcome {
+
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.3); */
+}
+
+
+
+
     </style>
 </head>
 <body>
 
-    <nav class="navbar navbar-expand-lg navbar-dark bg-success fixed-top">
+    <nav class="navbar navbar-expand-lg navbar-dark  fixed-top">
         <div class="container">
           <a class="navbar-brand" href="#">Church Management</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
@@ -185,6 +199,15 @@
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
                 <a class="nav-link" href="#about">About</a>
+              </li>
+              <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                  Solution
+                </a>
+                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                  <a class="dropdown-item" href="#member management">Members Management</a>
+                  <a class="dropdown-item" href="#contribution management">Contribution Management</a>
+                </div>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="{{ route('login') }}">Login</a>
