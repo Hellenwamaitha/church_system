@@ -34,18 +34,19 @@ class MemberController extends Controller
     {
         try {
             $validatedData = $request->validated();
-
+    
             // Create the new member
             Member::create($validatedData);
-
-            // Redirect to the page listing all members
-            return redirect()->route('members.index');
+    
+            // Redirect to the page listing all members with a success message
+            return redirect()->route('members.index')->with('success', 'Member created successfully!');
         } catch (\Exception $e) {
             Log::error('Error creating member: ' . $e->getMessage());
             // Handle the error or display an error message
             return back()->withError('Error creating member. Please try again.');
         }
     }
+    
 
 
     // Method to display the specified member
