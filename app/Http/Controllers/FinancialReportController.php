@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Money;
+use Illuminate\Support\Facades\Auth;
 use App\Models\FinancialReport;
 use Carbon\Carbon;
 
@@ -15,17 +17,17 @@ class FinancialReportController extends Controller
      */
     public function index()
     {
-        // Fetch all financial reports
-        $financialReports = FinancialReport::all();
+        // Fetch all offerings and tithes from the Money table
+        $totalOfferings = Money::where('type', 'offering')->sum('amount');
+        $totalTithes = Money::where('type', 'tithe')->sum('amount');
+        $totalIncome = Money::sum('amount');
 
-        // Calculate the total offerings and tithes
-        $totalOfferings = $financialReports->sum('total_offerings');
-        $totalTithes = $financialReports->sum('total_tithes');
-        $totalIncome = $financialReports->sum('total_income');
-
-
-        // Return a view with the financial reports and totals
-        return view('financialreport.index', compact('financialReports', 'totalOfferings', 'totalTithes', 'totalIncome',));
+        // Return a view with the totals
+        return view('financialreport.index', [
+            'totalOfferings' => $totalOfferings,
+            'totalTithes' => $totalTithes,
+            'totalIncome' => $totalIncome,
+        ]);
     }
 
     /**
@@ -33,7 +35,10 @@ class FinancialReportController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-
+    // public function create()
+    // {
+    //     return view('financialreport.create');
+    // }
 
     /**
      * Store a newly created financial report in storage.
@@ -48,17 +53,10 @@ class FinancialReportController extends Controller
             'total_offerings' => 'required|numeric',
             'total_tithes' => 'required|numeric',
             'total_income' => 'required|numeric',
-
         ]);
 
         // Create a new financial report instance and fill it with validated data
-        $financialReport = new FinancialReport();
-        $financialReport->total_offerings = $request->input('total_offerings');
-        $financialReport->total_tithes = $request->input('total_tithes');
-        $financialReport->total_income = $request->input('total_income');
-
-        // Save the financial report to the database
-        $financialReport->save();
+        FinancialReport::create($request->all());
 
         // Redirect back with a success message
         return redirect()->route('financialreport.index')->with('success', 'Financial report added successfully.');
@@ -70,10 +68,10 @@ class FinancialReportController extends Controller
      * @param  \App\Models\FinancialReport  $financialReport
      * @return \Illuminate\Http\Response
      */
-    // public function show(FinancialReport $financialReport)
-    // {
-    //     return view('financialreport.show', compact('financialReport'));
-    // }
+    public function show(FinancialReport $financialReport)
+    {
+        return view('financialreport.show', compact('financialReport'));
+    }
 
     /**
      * Show the form for editing the specified financial report.
@@ -100,7 +98,6 @@ class FinancialReportController extends Controller
             'total_offerings' => 'required|numeric',
             'total_tithes' => 'required|numeric',
             'total_income' => 'required|numeric',
-
         ]);
 
         // Update the financial report with validated data
@@ -124,6 +121,12 @@ class FinancialReportController extends Controller
         return redirect()->route('financialreport.index')->with('success', 'Financial report deleted successfully.');
     }
 
+    /**
+     * Filter financial reports by period.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
     public function filter(Request $request)
     {
         $period = $request->get('period');
@@ -147,7 +150,6 @@ class FinancialReportController extends Controller
         $totalTithes = $financialReports->sum('total_tithes');
         $totalIncome = $financialReports->sum('total_income');
 
-
-        return view('financialreport.index', compact('financialReports', 'totalOfferings', 'totalTithes'));
+        return view('financialreport.index', compact('financialReports', 'totalOfferings', 'totalTithes', 'totalIncome'));
     }
 }

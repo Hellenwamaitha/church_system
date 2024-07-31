@@ -1,80 +1,60 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
-        <div class="d-flex justify-content-between align-items-center mb-3">
-            <h1><strong>Financial Reports Overview</strong></h1>
-
-            <button type="button" class="btn btn-success" data-bs-toggle="modal" data-bs-target="#addReportModal" style="float: right;">
-                Add Financial Report
-            </button>
-        </div>
-
-        <form action="{{ route('financialreport.filter') }}" method="GET" class="mb-4">
-            <div class="input-group">
-                <select name="period" class="form-select" aria-label="Select period">
-                    <option value="quarterly">Quarterly</option>
-                    <option value="semiannually">Semi-Annually</option>
-                </select>
-                <button class="btn btn-primary" type="submit">Filter</button>
-            </div>
-        </form>
-
-        <div class="row mb-4">
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Offerings</h5>
-                        <p class="card-text">${{ number_format($totalOfferings, 2) }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Tithes</h5>
-                        <p class="card-text">${{ number_format($totalTithes, 2) }}</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-4">
-                <div class="card">
-                    <div class="card-body">
-                        <h5 class="card-title">Total Income</h5>
-                        <p class="card-text">${{ number_format($totalIncome, 2) }}</p>
-                    </div>
+<div class="container">
+    <!-- Cards for displaying totals -->
+    <div class="row mb-4">
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Offerings</h5>
+                    <p class="card-text">${{ number_format($totalOfferings, 2) }}</p>
                 </div>
             </div>
         </div>
-        <table class="table table-hover">
-            <thead>
-                <tr>
-                    <th>Total Offerings</th>
-                    <th>Total Tithes</th>
-                    <th>Total Income</th>
-                    <th>Actions</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach ($financialReports as $report)
-                    <tr>
-                        <td>{{ $report->total_offerings }}</td>
-                        <td>{{ $report->total_tithes }}</td>
-                        <td>{{ $report->total_income }}</td>
-                        <td>
-                            {{-- <a href="{{ route('#', $report->id) }}" class="btn btn-info">View</a> --}}
-                            {{-- <a href="{{ route('#', $report->id) }}" class="btn btn-primary">Edit</a> --}}
-                            {{-- <form action="{{ route('#', $report->id) }}" method="POST" style="display:inline-block;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger" onclick="return confirm('Are you sure?')">Delete</button>
-                            </form> --}}
-                        </td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Tithes</h5>
+                    <p class="card-text">${{ number_format($totalTithes, 2) }}</p>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Total Income</h5>
+                    <p class="card-text">${{ number_format($totalIncome, 2) }}</p>
+                </div>
+            </div>
+        </div>
     </div>
+
+    <!-- Table to display data -->
+    <table class="table table-hover">
+        <thead>
+            <tr>
+                <th>Total Offerings</th>
+                <th>Total Tithes</th>
+                <th>Total Income</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>${{ number_format($totalOfferings, 2) }}</td>
+                <td>${{ number_format($totalTithes, 2) }}</td>
+                <td>${{ number_format($totalIncome, 2) }}</td>
+                <td>
+                    <!-- Print Button -->
+                    <button onclick="window.print()" class="btn btn-primary">
+                        Print
+                    </button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</div>
 
     <div class="modal fade" id="addReportModal" tabindex="-1" aria-labelledby="addReportModalLabel" aria-hidden="true">
         <div class="modal-dialog">
@@ -103,6 +83,30 @@
                 </div>
             </div>
         </div>
+
+
+<script>
+    @media print {
+    body {
+        font-family: Arial, sans-serif;
+    }
+
+    .container {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+    }
+
+    .card, .table {
+        page-break-inside: avoid;
+    }
+
+    .print-button {
+        display: none;
+    }
+}
+
+</script>
 @endsection
 
 

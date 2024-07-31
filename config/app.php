@@ -44,6 +44,8 @@ return [
         // App\Providers\BroadcastServiceProvider::class,
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
+        
+
 
     ],
 
@@ -170,6 +172,10 @@ return [
     ],
 
 
+    'aliases' => [
+    // Other facades...
+    'Excel' => Maatwebsite\Excel\Facades\Excel::class,
+],
 
 
 

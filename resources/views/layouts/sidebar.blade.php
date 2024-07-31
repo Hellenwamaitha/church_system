@@ -22,7 +22,7 @@
 
         <nav class="mt-2">
             <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-                @if(Auth::user()->hasRole('finance_officer'))
+                @if(auth()->check() && auth()->user()->hasRole('finance_officer'))
                     <li class="nav-item">
                         <a href="#" class="nav-link">
                             <i class="nav-icon fas fa-cogs"></i>
@@ -54,7 +54,7 @@
                     </li>
                 @endif
 
-                @if(Auth::user()->hasRole('admin'))
+                @if(auth()->check() && auth()->user()->hasRole('admin'))
                     <li class="nav-item">
                         <a href="/admin/dashboard" class="nav-link">
                             <i class="nav-icon fas fa-tachometer-alt"></i>
@@ -101,6 +101,7 @@
         </nav>
     </div>
 </aside>
+
 
 
 
