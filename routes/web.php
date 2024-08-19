@@ -9,6 +9,8 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\AccountusersController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FinancialReportController;
+use App\Http\Controllers\DashboardController;
+
 
 
 
@@ -38,7 +40,9 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/members/{member}', [MemberController::class, 'update'])->name('members.update');
     Route::delete('/admin/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
     Route::get('/admin/members/search', [MemberController::class, 'search'])->name('members.search');
+    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
     
+
 
     Route::post('/admin/events', [EventManagementController::class, 'store'])->name('events.store');
     Route::get('/admin/events/create', [EventManagementController::class, 'create'])->name('events.create');
@@ -80,6 +84,11 @@ Route::middleware(['auth'])->group(function () {
    Route::get('/finance/financialreport/index', [FinancialReportController::class, 'index'])->name('financialreport.index');
    Route::post('/finance/financialreport', [FinancialReportController::class, 'store'])->name('financialreport.store');
    Route::get('/finance/financialreport/filter', [FinancialReportController::class, 'filter'])->name('financialreport.filter');
+
+
+  
+
+
 
 });
 

@@ -12,7 +12,7 @@ class ExpenseController extends Controller
         // Fetch expenses if needed
         $expenses = Expense::all();
 
-        // Define categories (as an example, you can fetch these from somewhere if needed)
+        // Define categories
         $categories = ['Food', 'Transport', 'Utilities', 'Miscellaneous'];
 
         // Pass the categories and expenses to the view
