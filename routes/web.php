@@ -32,7 +32,7 @@ require __DIR__.'/auth.php';
 
 Route::middleware(['auth'])->group(function () {
     Route::get('/admin/dashboard', [AdminDashController::class, 'index'])->name('admin.dashboard');
-    Route::get('/admin/dashboard/count-data',[AdminDashController::class, 'getCountData'])->name('admin.getCountData');
+    Route::get('/admin/dashboard/get-count-data',[AdminDashController::class, 'getCountData'])->name('admin.getCountData');
     Route::get('/admin/members/index', [MemberController::class, 'index'])->name('members.index');
     Route::get('/admin/members/create', [MemberController::class, 'create'])->name('members.create');
     Route::post('/admin/members', [MemberController::class, 'store'])->name('members.store');

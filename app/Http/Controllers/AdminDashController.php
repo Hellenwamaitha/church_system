@@ -28,13 +28,13 @@ class AdminDashController extends Controller
       $activeMembers = Member::Where('membership_status', 'active')->count();
 
       // fetch inactive members using Where method
-      $inactiveMember = Member::Where('membership_status','inactive')->count();
+      $inactiveMembers = Member::Where('membership_status','inactive')->count();
 
       //Return the data as JSON
       return response()->json([
-        'totalMembers' =>$totalMembers,
-        'activeMembers' =>$activeMembers,
-        'inactiveMembers' =>$inactiveMembers,
+        'totalMembers' => $totalMembers,
+        'activeMembers' => $activeMembers,
+        'inactiveMembers' => $inactiveMembers,
       ]);
     }
         
