@@ -2,49 +2,62 @@
 
 @section('content')
 <div class="container">
-    <div class="card">
-        <div class="card-header">
-            <h3 class="card-title">Membership Status Distribution</h3>
+    <div class="row">
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                     <h5 class="card-title">Total Members</h5>
+                     <p class="card-text" id="totalMembers">Loading...</p>
+                </div>    
+            </div>
         </div>
-        <div class="card-body">
-            <canvas id="doughnutChart"></canvas>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                     <h5 class="card-title">Active Members</h5>
+                     <p class="card-text" id="activeMembers">Loading...</p>
+                </div>    
+            </div>
         </div>
+
+        <div class="col-lg-4 col-md-6 mb-4">
+            <div class="card">
+                <div class="card-body">
+                     <h5 class="card-title">Inactive Members</h5>
+                     <p class="card-text" id="inactiveMembers">Loading...</p>
+                </div>    
+            </div>
+        </div>
+
     </div>
 </div>
 @endsection
 
 @push('scripts')
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // var statusLabels = @json($statusData->pluck('membership_status'));
-        var statusCounts = @json($statusData->pluck('count'));
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
 
-        var ctxDoughnut = document.getElementById('doughnutChart').getContext('2d');
-        var doughnutChart = new Chart(ctxDoughnut, {
-            type: 'doughnut',
-            data: {
-                labels: statusLabels,
-                datasets: [{
-                    data: statusCounts,
-                    backgroundColor: ['rgba(54, 162, 235)', 'rgba(255, 99, 132'],
-                }]
-            },
-            options: {
-                plugins: {
-                    legend: {
-                        position: 'top',
-                    },
-                    tooltip: {
-                        callbacks: {
-                            label: function(tooltipItem) {
-                                return statusLabels[tooltipItem.index] + ': ' + statusCounts[tooltipItem.index];
-                            }
-                        }
-                    }
-                }
-            }
-        });
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        // Function to fetch and update count data
+        function fetchCountData() {
+        fetch('{{ route('admin.getCountData') }}')
+            .then(response => response.json())
+            .then(data => {
+                document.getElementById('total-members').querySelector('p').textContent = data.totalMembers;
+                document.getElementById('active-members').querySelector('p').textContent = data.activeMembers;
+                document.getElementById('inactive-members').querySelector('p').textContent = data.inactiveMembers;
+                
+            })
+            .catch(error => console.error('Error fetching count data:', error));
+    }
+
+        // Poll the server every 10 seconds for updates
+        setInterval(fetchMemberCounts, 10000);
+
+        // Initial data load
+        fetchMemberCounts();
     });
 </script>
 @endpush

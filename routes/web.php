@@ -1,6 +1,6 @@
 <?php
 use App\Http\Controllers\EventManagementController;
-use App\Http\Controllers\AdminController;
+// use App\Http\Controllers\AdminController;
 use App\Http\Controllers\FinanceController;
 use App\Http\Controllers\MemberController;
 use App\Http\Controllers\ProfileController;
@@ -9,7 +9,7 @@ use App\Http\Controllers\BudgetController;
 use App\Http\Controllers\AccountusersController;
 use App\Http\Controllers\ExpenseController;
 use App\Http\Controllers\FinancialReportController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\AdminDashController;
 
 
 
@@ -31,7 +31,8 @@ require __DIR__.'/auth.php';
 
 
 Route::middleware(['auth'])->group(function () {
-    Route::get('/admin/dashboard', [AdminController::class, 'dashboard'])->name('admin.dashboard');
+    Route::get('/admin/dashboard', [AdminDashController::class, 'index'])->name('admin.dashboard');
+    Route::get('/admin/dashboard/count-data',[AdminDashController::class, 'getCountData'])->name('admin.getCountData');
     Route::get('/admin/members/index', [MemberController::class, 'index'])->name('members.index');
     Route::get('/admin/members/create', [MemberController::class, 'create'])->name('members.create');
     Route::post('/admin/members', [MemberController::class, 'store'])->name('members.store');
@@ -40,7 +41,8 @@ Route::middleware(['auth'])->group(function () {
     Route::put('/admin/members/{member}', [MemberController::class, 'update'])->name('members.update');
     Route::delete('/admin/members/{member}', [MemberController::class, 'destroy'])->name('members.destroy');
     Route::get('/admin/members/search', [MemberController::class, 'search'])->name('members.search');
-    Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard', [DashboardController::class, 'index'])->name('admin.dashboard');
+    // Route::get('/admin/dashboard/members-count', [AdminDashController::class, 'getMemberCounts'])->name('dashboard.member.count');
     
 
 
