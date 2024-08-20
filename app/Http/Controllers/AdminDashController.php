@@ -9,7 +9,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        // Fetch data for doughnut chart (membership status counts - active and inactive)
+        // Fetch data from database for doughnut chart (membership status counts - active and inactive)
         $statusData = Member::select('membership_status', DB::raw('COUNT(*) as count'))
                             ->groupBy('membership_status')
                             ->get();

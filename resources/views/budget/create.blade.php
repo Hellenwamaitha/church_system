@@ -1,4 +1,4 @@
-<!-- resources/views/components/budget/create.blade.php -->
+
 <div class="modal fade" id="createBudgetModal" tabindex="-1" role="dialog" aria-labelledby="createBudgetModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">

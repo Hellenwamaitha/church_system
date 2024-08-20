@@ -1,4 +1,4 @@
-<!-- resources/views/components/budget/edit.blade.php -->
+
 @props(['budgetItem'])
 
 <div class="modal fade" id="editbudgetModal{{ $budgetItem->id }}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel{{ $budgetItem->id }}" aria-hidden="true">

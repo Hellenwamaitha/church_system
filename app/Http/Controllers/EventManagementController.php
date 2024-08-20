@@ -12,7 +12,8 @@ class EventManagementController extends Controller
 {
     public function index()
 {
-    $events = Event::all(); // Retrieve events from the database
+    // Retrieve method
+    $events = Event::all(); 
     return view('events.index', compact('events'));
 }
 
@@ -67,7 +68,7 @@ class EventManagementController extends Controller
 
     public function destroy(Event $event)
     {
-        // Delete the event
+        // Delete method
         $event->delete();
 
         // Redirect back with success message

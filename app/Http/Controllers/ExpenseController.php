@@ -9,20 +9,20 @@ class ExpenseController extends Controller
 {
     public function index()
     {
-        // Fetch expenses if needed
+        // Fetch expenses 
         $expenses = Expense::all();
 
-        // Define categories
+        //  Categories
         $categories = ['Food', 'Transport', 'Utilities', 'Miscellaneous'];
 
-        // Pass the categories and expenses to the view
+        // Pass  to the view
         return view('expenses.index', compact('categories', 'expenses'));
     }
 
 
     public function store(Request $request)
     {
-        // Validate the incoming request data
+        // Validate the  data
         $request->validate([
             'date' => 'required|date',
             'amount' => 'required|numeric',
@@ -38,20 +38,20 @@ class ExpenseController extends Controller
         $documentPath = null;
           }
           
-        // Create a new expense instance
+        // Create a new expense 
         $expense = new Expense();
 
-        // Assign the request data to the expense attributes
+        // Assign the request data to the expense 
         $expense->date = $request->date;
         $expense->amount = $request->amount;
         $expense->description = $request->description;
         $expense->category= $request->category;
         $expense->document_path = $request->document_path;
 
-        // Save the expense to the database
+        // Save  expense to the database
         $expense->save();
 
-        // Redirect back to the index page with a success message
+        // Redirect back to  index page with a success message
         return redirect()->route('expenses.index')->with('success', 'Expense added successfully.');
     }
 }

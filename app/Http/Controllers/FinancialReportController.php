@@ -103,7 +103,7 @@ class FinancialReportController extends Controller
         // Update the financial report with validated data
         $financialReport->update($request->all());
 
-        // Redirect back with a success message
+        
         return redirect()->route('financialreport.index')->with('success', 'Financial report updated successfully.');
     }
 

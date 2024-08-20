@@ -14,6 +14,7 @@ use DatePeriod;
 class FinanceController extends Controller
 {
     public function dashboard()
+
     {
         return view('finance.dashboard');
     }

@@ -8,7 +8,7 @@ use App\Models\BudgetItem;
 class BudgetController extends Controller
 
 {
-   // Display a listing of budget items
+   // Display a list of budget items
     public function index()
     {
         $budgetItems = BudgetItem::all();
@@ -21,7 +21,7 @@ class BudgetController extends Controller
         return view('budget.create');
     }
 
-    // Store a newly created budget item in storage
+    // Store a newly created budget item in database
     public function store(Request $request)
     {
         // Validate request data
@@ -31,14 +31,15 @@ class BudgetController extends Controller
         return redirect()->route('budget.index');
     }
 
-    // Show the form for editing the specified budget item
+    
     public function edit($id)
     {
+        // Show the form for editing the specified budget item
         $budgetItem = BudgetItem::findOrFail($id);
         return view('resources.edit', compact('budgetItem'));
     }
 
-    // Update the specified budget item in storage
+    // Update the specified budget item in the database
     public function update(Request $request, BudgetItem $budgetItem)
 {
     $request->validate([
@@ -53,7 +54,7 @@ class BudgetController extends Controller
 }
 
 
-    // Remove the specified budget item from storage
+    // Remove the specified budget item from storage using the id
     public function destroy($id)
     {
         $budgetItem = BudgetItem::findOrFail($id);
@@ -66,7 +67,7 @@ class BudgetController extends Controller
     {
         $search = $request->input('search');
 
-        // Perform search query based on 'category' exact match
+        // Search query based on 'category' exact match
         $budgetItems = BudgetItem::where('category', 'LIKE', "%$search%")
                                 ->get();
 

@@ -15,6 +15,6 @@ class FinancialReport extends Model
         'total_income',
     ];
 
-    // If your table name is different from the plural form of the model name, specify it
+    // Specified the table name 
     protected $table = 'financial_reports';
 }
