@@ -13,6 +13,7 @@ use DatePeriod;
 
 class FinanceController extends Controller
 {
+    // Display the finance
     public function dashboard()
 
     {
@@ -34,6 +35,8 @@ class FinanceController extends Controller
         return back()->with('success', 'Users imported successfully.');
     }
 
+
+     // Display the offerings and tithes
     public function index()
     {
         $offerings = Money::where('type', 'offering')->get();
@@ -46,9 +49,10 @@ class FinanceController extends Controller
     }
 
 
-
+   // Creating data 
     public function store(Request $request)
 {
+    //Validate incoming data
     $request->validate([
         'date' => 'required|date',
         'type' => 'required|in:offering,tithe',

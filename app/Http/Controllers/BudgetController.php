@@ -24,7 +24,7 @@ class BudgetController extends Controller
     // Store a newly created budget item in database
     public function store(Request $request)
     {
-        // Validate request data
+       
 
         BudgetItem::create($request->all());
 
@@ -42,6 +42,7 @@ class BudgetController extends Controller
     // Update the specified budget item in the database
     public function update(Request $request, BudgetItem $budgetItem)
 {
+    //Validate updated data
     $request->validate([
         'category' => 'required|string|max:255',
         'amount_allocated' => 'required|numeric',

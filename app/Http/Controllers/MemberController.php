@@ -79,7 +79,7 @@ class MemberController extends Controller
             'phone_number' => 'required|string|max:255',
             'address' => 'required|string|max:255',
             'membership' => 'required|string|max:255',
-            // Add validation rules for other fields as needed
+           
         ]);
 
         // Log the validated data for debugging purposes
