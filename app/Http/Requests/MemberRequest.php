@@ -22,15 +22,21 @@ class MemberRequest extends FormRequest
      * @return array
      */
     public function rules()
-    {
-        return [
-            'first_name' => 'required|string|max:255',
-            'last_name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:members',
-            'phone_number' => 'required|string|max:20',
-            'address' => 'required|string|max:255',
-            'membership_status' => 'required|string|max:255',
-        ];
-    }
+{
+    $memberId = $this->route('member') ? $this->route('member')->id : null;
+
+    return [
+        'branch_id' => 'required|exists:branches,id',
+        'first_name' => 'required|string|max:255',
+        'last_name' => 'required|string|max:255',
+        'email' => 'required|email|unique:members,email,' . $memberId,
+        'phone_number' => 'required|string|max:20',
+        'address' => 'nullable|string|max:255',
+        'membership_status' => 'required|string|max:255',
+        'joined_date' => 'required|date',
+        'category' => 'required|in:ladies,men,youths',
+    ];
+}
+
 }
 
