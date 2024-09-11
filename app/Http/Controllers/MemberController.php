@@ -32,26 +32,26 @@ class MemberController extends Controller
    }
 
    public function edit(Member $member)
-{
-    return view('members.edit', compact('member'));
-}
+    {
+        return view('members.edit', compact('member'));
+    }
 
   
-public function updatew(MemberRequest $request,Member $member)
-{
-   $member->update($request->validate());
+    public function update(MemberRequest $request,Member $member)
+    {
+    $member->update($request->validate());
 
-   return redirect()->route('members.index')
-                    ->with('sucess', 'member updated successfully');
-}
+    return redirect()->route('members.index')
+                        ->with('sucess', 'member updated successfully');
+    }
 
-public function destroy(Member $member)
-{
+    public function destroy(Member $member)
+    {
 
-$member->delete();
-return redirect()->route('members.index')
-                 ->with('success', 'Member deleted sucessfully');
-}  
+    $member->delete();
+    return redirect()->route('members.index')
+                    ->with('success', 'Member deleted sucessfully');
+    }  
 
 public function upload(Request $request)
 {
