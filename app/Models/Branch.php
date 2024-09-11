@@ -19,7 +19,7 @@ class Branch extends Model
         
     ];
 
-     // Each Branch belongs to one Church
+     // Each Branch belongs to one Church : Reletaionship
      public function church()
      {
          return $this->belongsTo(Church::class);

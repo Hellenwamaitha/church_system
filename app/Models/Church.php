@@ -12,7 +12,7 @@ class Church extends Model
         'name', 'address', 'phone', 'email', 'established_date',
     ];
     
-    // One Church has many Branches
+    // One Church has many Branches : Relationship
     public function branches()
     {
         return $this->hasMany(Branch::class);
