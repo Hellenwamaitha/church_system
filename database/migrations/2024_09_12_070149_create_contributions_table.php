@@ -11,14 +11,15 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('budget_items', function (Blueprint $table) {
+        Schema::create('contributions', function (Blueprint $table) {
             $table->id();
-            $table->string('category');
-            $table->string('amount_allocated');
-            $table->string('additional_notes');
+            $table->foreignId('branch_id')->constrained()->onDelete('cascade');
+            $table->decimal('amount', 10, 2);
+            $table->enum('contribution_type', ['offering', 'tithes', 'donation']);
+            $table->date('date');
+            $table->string('purpose')->nullable();
             $table->timestamps();
         });
-
     }
 
     /**
@@ -26,6 +27,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('budget_items');
+        Schema::dropIfExists('contributions');
     }
 };
