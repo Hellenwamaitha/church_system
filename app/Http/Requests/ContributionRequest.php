@@ -22,7 +22,14 @@ class ContributionRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            
+                'branch_id' => 'required|exists:branches,id',
+                'amount' => 'required|numeric|min:0',
+                'contribution_type' => 'required|string|max:255',
+                'date' => 'required|date',
+                'purpose' => 'nullable|string|max:255',
+            
+
         ];
     }
 }

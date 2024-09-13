@@ -23,11 +23,15 @@ class BranchRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'church_id' => 'required|exists:branches,id',
-            'name' => 'required|string|max:255',
-            'Location' => 'required|string|max:15',
-            'phone_number' => 'required|string|max:20',
-            'email' => 'required|email|unique:churches,email,' . $this->branch,
-            'branch_manager' => 'required|string|max:255',
+            'branch_id.required' => 'The branch field is required.',
+            'branch_id.exists' => 'The selected branch does not exist.',
+            'amount.required' => 'The amount is required.',
+            'amount.numeric' => 'The amount must be a number.',
+            'contribution_type.required' => 'Please specify the type of contribution.',
+            'date.required' => 'The date of contribution is required.',
+            'date.date' => 'Please provide a valid date.',
         ];
+    }
+        
 }
+

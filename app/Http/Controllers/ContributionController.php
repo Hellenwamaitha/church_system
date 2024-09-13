@@ -17,11 +17,7 @@ class ContributionController extends Controller
         return view('contributions.index', compact('contributions'));        
     }
 
-    public function create()
-    {
-        $branches = Branch::all();
-        return view('contributions.create', compact('branches'));
-    }
+   
 
-    
+
 }

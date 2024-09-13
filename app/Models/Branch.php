@@ -9,14 +9,7 @@ class Branch extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'church_id',
-        'name',
-        'adrress',
-        'location',
-        'phone_number',
-        'email',
-        'branch_manager',
-        
+        'church_id', 'branch_name', 'pastor_name', 'pastor_email',   'status'
     ];
 
      // Each Branch belongs to one Church : Reletaionship
@@ -24,4 +17,10 @@ class Branch extends Model
      {
          return $this->belongsTo(Church::class);
      }
+
+     // User belong to a branch
+     public function users()
+    {
+        return $this->hasMany(User::class);
+    }
 }

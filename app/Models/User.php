@@ -9,7 +9,7 @@ class User extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'email', 'password', 'role', 'church_id', 'branch_id',
+        'name', 'email', 'password', 'role', 'branch_id'
     ];
 
     protected $hidden =[

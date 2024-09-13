@@ -2,66 +2,48 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+
 use App\Models\Church;
+use App\Models\User;
+use App\Models\Branch;
 use App\Http\Requests\ChurchRequest;
+use illumiinate\support\facedes\Hash;
 
 class ChurchController extends Controller
 {
-    // Display a listing of churches.
-    public function index()
-    {
-        // Eager load branches
-        $churches = Church::with('branches')->get(); 
-        return view('churches.index', compact('churches'));
-    }
-
-    // Form for creating a new church
     public function create()
     {
         return view('churches.create');
     }
 
-    // Store newly created church in the database
     public function store(ChurchRequest $request)
     {
-        Church::create($request->validated());
-
-        return redirect()->route('churches.index')->with('success', 'Church created successfully.');
-    }
-
-    // Display specified church along with its branches 
-    public function show($id)
-    {
-        $church = Church::with('branches')->findorfail($id);
-        return view('churches.show', compact('church'));
-    }
+        // Store Church
+        $validatedData = $request->validated();
+        $validatedData['status'] = 'pending'; 
     
+        $church = Church::create($validatedData);
 
-    // form for editing a specified church
-    public function edit($id)
-    {
-        $church = Church::findorfail($id);
-        return view('churches.edit', compact('church'));
+        // Store Branches and their Pastors
+        foreach ($request->branches as $branchData) {
+            $branch = Branch::create([
+                'church_id' => $church->id,
+                'branch_name' => $branchData['branch_name'],
+                'pastor_name' => $branchData['pastor_name'],
+                'pastor_email' => $branchData['pastor_email'],
+            ]);
+            $branchData['status'] = 'pending';
+
+            // Create Branch Pastor as the first user
+            User::create([
+                'name' => $branchData['pastor_name'],
+                'email' => $branchData['pastor_email'],
+                'password' => Hash::make($request->password),
+                'role' => 'pastor',
+                'branch_id' => $branch->id,
+            ]);
+        }
+
+        return redirect()->route('login')->with('success', 'Church and Branches created successfully.');
     }
-
-    // Updating the specified church in the database.
-    public function update(ChurchRequest $request, $id)
-    {
-        $church = Church::findorfail($id);
-        $church->update($request->validated());
-
-        return redirect()->route('churches.index')->with('success', 'Church updated successfully.');
-    }
-
-    // Remove the specified church from the database
-    public function destroy($id)
-    {
-        $church = Church::findorfail($id);
-        $church->delete();
-        return redirect()->route('churches.index')->with('success', 'Church deleted successfully.');
-    }
-
-
-
 }

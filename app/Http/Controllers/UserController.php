@@ -26,16 +26,16 @@ class UserController extends Controller
     }
 
     //Store newly created user
-    public function store(UserRequest $requests)
-    {
-     $validateDate = $requests->validate();
-     $validateDate['password'] = Hash::make($requests->password);
+    // public function store(UserRequest $requests)
+    // {
+    //  $validateDate = $requests->validate();
+    //  $validateDate['password'] = Hash::make($requests->password);
 
-     user::create($validateData);
+    //  user::create($validateData);
 
-     return redirect()->route('users.index')
-                     ->with('success', 'User created successfuly.');
-    }
+    //  return redirect()->route('users.index')
+    //                  ->with('success', 'User created successfuly.');
+    // }
 
     //Display specified user
     public function show($id)

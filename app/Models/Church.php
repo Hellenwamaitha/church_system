@@ -9,7 +9,7 @@ class Church extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'name', 'address', 'phone', 'email', 'established_date',
+        'name', 'address', 'phone', 'email', 'established_date', 'establisher_name', 'status'
     ];
     
     // One Church has many Branches : Relationship
